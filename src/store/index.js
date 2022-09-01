@@ -33,6 +33,10 @@ export default createStore({
       mapedTodos.splice(targetIndex, 1, payload)
       state.allTodos = mapedTodos
       localStorage.setItem('todos', JSON.stringify(mapedTodos))
+    },
+    UPDATE_TODOS: (state, payload) => {
+      state.allTodos = payload
+      localStorage.setItem('todos', JSON.stringify(payload))
     }
   },
   actions: {
@@ -48,6 +52,9 @@ export default createStore({
     },
     editTodo:({commit}, payload) => {
       commit('EDIT_TODO', payload)
+    },
+    setTodos: ({commit}, payload) => {
+      commit('UPDATE_TODOS', payload)
     }
   }
 })
