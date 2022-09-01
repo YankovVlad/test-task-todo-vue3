@@ -3,7 +3,10 @@
     <div class="todo-app__body">
       <TodoHeader title="Today I need to" />
       <CreateTodoForm class="todo-app__form" />
-      <TodoList :todos="todos" />
+      <TodoList
+        :todos="todos"
+        class="todo-app__list"
+      />
     </div>
 
     <TodoFooter :todos="todos" />

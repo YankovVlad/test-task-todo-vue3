@@ -20,7 +20,7 @@ export default createStore({
     },
     ADD_TODO: (state, payload) => {
       localStorage.setItem('todos', JSON.stringify([...state.allTodos, payload]))
-      state.allTodos = [...state.allTodos, payload]
+      state.allTodos = [payload, ...state.allTodos]
     },
     DELETE_TODO: (state, id) => {
       const filteredTodos = state.allTodos.filter(todo => todo.id !== id)

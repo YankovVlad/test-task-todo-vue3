@@ -36,7 +36,6 @@ export default {
   methods: {
     ...mapActions(["setTodos"]),
     updateTodos() {
-      console.log(this.todos);
       this.setTodos(this.todos);
     },
   },
@@ -49,8 +48,27 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-height: 15vh;
+  overflow-y: scroll;
   margin-bottom: 10px;
   list-style-type: none;
+
+  // &::-webkit-scrollbar {
+  //   width: 2px;
+  //   background-color: transparent;
+  // }
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $br-s;
+    box-shadow: inset 0 0 6px $color-grey-1;
+  }
   &__drag-area {
     width: 100%;
   }
@@ -65,7 +83,7 @@ export default {
 .list-enter-from,
 .list-leave-to {
   opacity: 0;
-  transform: translateX(30px);
+  transform: translateY(-30px);
 }
 
 .list-leave-active {
