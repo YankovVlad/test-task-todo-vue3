@@ -53,10 +53,6 @@ export default {
   margin-bottom: 10px;
   list-style-type: none;
 
-  // &::-webkit-scrollbar {
-  //   width: 2px;
-  //   background-color: transparent;
-  // }
   &::-webkit-scrollbar {
     width: 4px;
   }
@@ -71,6 +67,9 @@ export default {
   }
   &__drag-area {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 

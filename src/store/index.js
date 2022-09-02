@@ -1,15 +1,9 @@
 import { createStore } from 'vuex'
-
+import TodoModel from '../models/todoModel'
 
 export default createStore({
   state: {
-    allTodos: [
-      {
-        id: '1',
-        name: 'todo',
-        completed: false
-      }
-    ]
+    allTodos: []
   },
   getters: {
     todos: (state) => state.allTodos
@@ -41,7 +35,7 @@ export default createStore({
   },
   actions: {
     fetchTodos: ({commit}) => {
-      const todos = JSON.parse(localStorage.getItem('todos')) || []
+      const todos = JSON.parse(localStorage.getItem('todos')).map(item => new TodoModel(item)) || []
       commit('SET_TODOS', todos)
     },
     addTodo: ({commit}, payload) => {

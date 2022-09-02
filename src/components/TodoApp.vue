@@ -4,12 +4,16 @@
       <TodoHeader title="Today I need to" />
       <CreateTodoForm class="todo-app__form" />
       <TodoList
-        :todos="todos"
+        :todos="sortedTodos(currentSortingOption)"
         class="todo-app__list"
       />
     </div>
 
-    <TodoFooter :todos="todos" />
+    <TodoFooter
+      :todos="todos"
+      :current-sorting-option="currentSortingOption"
+      @sortingChanged="changeSorting"
+    />
   </div>
 </template>
 
@@ -28,8 +32,32 @@ export default {
     TodoHeader,
     TodoFooter,
   },
+  data() {
+    return {
+      currentSortingOption: "All",
+    };
+  },
   computed: {
     ...mapGetters(["todos"]),
+    sortedTodos() {
+      return (option) => {
+        switch (option) {
+          case "All":
+            return this.todos;
+          case "Active":
+            return this.todos.filter((todo) => !todo.completed);
+          case "Completed":
+            return this.todos.filter((todo) => todo.completed);
+          default:
+            return this.todos;
+        }
+      };
+    },
+  },
+  methods: {
+    changeSorting(value) {
+      this.currentSortingOption = value;
+    },
   },
 };
 </script>
@@ -48,12 +76,17 @@ export default {
   @include xl {
     padding: 32px 160px;
   }
+  @include mobile {
+    width: 90%;
+    padding: 16px 20px;
+  }
 
   &__body {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    max-width: 420px;
   }
 
   &__illustration {

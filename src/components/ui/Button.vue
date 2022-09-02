@@ -27,13 +27,16 @@ export default {
   @include fontSize("xs");
   font-weight: 600;
   background-color: $color-primary-blue-0;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
+  transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
 
   &:not(.button:disabled):hover {
     background-color: $color-primary-blue-1;
   }
   &:disabled {
     opacity: 0.5;
+  }
+  &:active {
+    transform: scale(0.95);
   }
 }
 </style>

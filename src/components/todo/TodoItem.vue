@@ -54,9 +54,10 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
 import IconDrag from "../icons/IconDrag.vue";
 import IconButton from "../ui/IconButton.vue";
+import { mapActions } from "vuex";
+import TodoModel from "../../models/todoModel.js";
 export default {
   name: "TodoItem",
   components: {
@@ -97,20 +98,24 @@ export default {
       this.isEdit = value;
     },
     edit() {
-      this.editTodo({
-        id: this.todo.id,
-        name: this.name,
-        completed: this.todo.completed,
-      });
+      this.editTodo(
+        new TodoModel({
+          id: this.todo.id,
+          name: this.name,
+          completed: this.todo.completed,
+        })
+      );
       this.isEdit = false;
     },
     changeTodoStatus(e) {
       this.todo.completed = e.target.checked;
-      this.editTodo({
-        id: this.todo.id,
-        name: this.name,
-        completed: e.target.checked,
-      });
+      this.editTodo(
+        new TodoModel({
+          id: this.todo.id,
+          name: this.name,
+          completed: e.target.checked,
+        })
+      );
     },
   },
 };
