@@ -7,11 +7,13 @@
       v-model="name"
       @keyup.enter="add"
     >
-    <Button
-      label="Submit"
-      :disabled="isDisabled"
-      @click="add"
-    />
+    <Transition>
+      <Button
+        v-if="!isDisabled"
+        label="Submit"
+        @click="add"
+      />
+    </Transition>
   </div>
 </template>
 
@@ -57,13 +59,12 @@ export default {
 
   &__input {
     width: 100%;
-    max-width: 320px;
+    max-width: 310px;
     height: 40px;
     padding: 12px;
     border: 1px solid $color-grey-2;
     border-radius: $br-m;
     @include fontSize("s");
-
     &:focus {
       outline: none;
     }
@@ -71,5 +72,14 @@ export default {
       color: $color-grey-3;
     }
   }
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>

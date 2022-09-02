@@ -25,6 +25,7 @@
 
     <div class="todo-footer__sorting">
       <span
+        v-if="naveNotCompleted"
         class="todo-footer__sort-item"
         @click="setEachState(true)"
       >Check all</span>
@@ -35,6 +36,7 @@
         @click="changeSorting(sortItem.name)"
       >{{sortItem.name}}</span>
       <span
+        v-if="haveCompleted"
         class="todo-footer__sort-item"
         @click="setEachState(false)"
       >Clear complited</span>
@@ -118,6 +120,14 @@ export default {
           },
         ];
       };
+    },
+    haveCompleted() {
+      return this.todos.filter((todo) => todo.completed).length;
+    },
+    naveNotCompleted() {
+      return (
+        this.todos.filter((todo) => todo.completed).length !== this.todos.length
+      );
     },
   },
   mounted() {
