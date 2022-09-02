@@ -1,31 +1,52 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="app">
+    <TodoApp />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<script>
+import { mapActions } from "vuex";
+import TodoApp from "./components/TodoApp.vue";
+export default {
+  name: "App",
+  components: {
+    TodoApp,
+  },
+  mounted() {
+    this.fetchTodos();
+  },
+  methods: {
+    ...mapActions(["fetchTodos"]),
+  },
+};
+</script>
+
+
+<style lang="scss" scoped>
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+      0deg,
+      #e0c3fc 0%,
+      #d7befc 21.87%,
+      #bcb1fc 42.19%,
+      #a1aefc 60.94%,
+      #94bdfc 80.73%,
+      #8ec5fc 100%
+    ),
+    linear-gradient(
+      0deg,
+      #84fab0 0%,
+      #85f9bc 21.87%,
+      #88f8d7 42.19%,
+      #8bf6f5 60.94%,
+      #8eddf5 80.73%,
+      #8fd3f4 100%
+    );
 }
 </style>
