@@ -1,0 +1,44 @@
+@mixin fontSize($size) {
+  @if $size == "xl" {
+    font-size: 28px;
+    line-height: 42px;
+  } @else if($size == "l") {
+    font-size: 24px;
+    line-height: 29px;
+  } @else if($size == "m") {
+    font-size: 16px;
+    line-height: 18px;
+  } @else if($size == "s") {
+    font-size: 14px;
+    line-height: 16px;
+  } @else if($size == "xs") {
+    font-size: 13px;
+    line-height: 16px;
+  } @else if($size == "xxs") {
+    font-size: 12px;
+    line-height: 16px;
+  } 
+}
+
+@mixin xl {
+  @media (min-width: 1919px) {
+    @content;
+  }
+}
+@mixin l {
+  @media (max-width: 1919px) {
+    @content;
+  }
+}
+
+@mixin m {
+  @media (max-width: 1439px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
