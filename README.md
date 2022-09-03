@@ -1,7 +1,24 @@
 # Vue 3 + Vite
+DEMO: https://yankovvlad.github.io/test-task-todo-vue3/
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Реализация тестового задания.
+Согласно заданию, реализовано:
+- создание дела по кнопке Submit, а также по нажатию Enter.
+- при отсутствии дел выводится соответстующее сообщение.
+- скрытие кнопки submit при пустоп поле ввода.
+- редактирование дела.
+- удаление дела.
+- перемещение дела (drag'n'drop). Реализовано с помощью библиотеки vue-draggable-next.
+- кнопка "Check all", которая отменяет все дела и ее скрытие, при условии отстуствия незавершенных дел.
+- кнопка "Complete all" которая выполняет все дела и ее скрытие при условии выполнения всех дел.
+- сортировка по статусу готовности All, active, completed.
+- статусы выполнения отражены на диаграммах с динамическе меняемыми занчениями.
+- хранение списка дел в localStorage, таким образом они сохраняют при перезагрузке страницы.ц
+- хранение списка дела в сторе приложения vuex и взаимодействия с ним.
+- верстка для мобильных устройств.
+- сборка проекта
 
-## Recommended IDE Setup
+Не реализовано:
+- скрытие не выбранных опций сортировки. Причина - счел нелогичным, так как по умолчанию активна опция All. Иначе говоря, изначально включив эту опцию, ничего не     изменится.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+Затрачено: 7ч.
