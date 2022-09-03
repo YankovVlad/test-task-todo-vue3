@@ -138,6 +138,10 @@ export default {
       cursor: pointer;
     }
   }
+  &__checkbox {
+    width: 16px;
+    height: 16px;
+  }
   &__name {
     flex: 1 0 30%;
     padding: 0 10px;

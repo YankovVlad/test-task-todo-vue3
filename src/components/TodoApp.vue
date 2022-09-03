@@ -73,6 +73,7 @@ export default {
   padding: 32px 90px;
   background-color: $color-grey-0;
   border-radius: $br-l;
+  overflow-y: scroll;
   @include xl {
     padding: 32px 160px;
   }
